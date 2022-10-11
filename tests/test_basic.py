@@ -1,15 +1,22 @@
 import pytest
 from context import blog
+from sanic_testing import SanicTestClient
 
 
 @pytest.fixture
 def app():
-    return blog.app
+    return SanicTestClient(blog.app)
 
 
-@pytest.mark.asyncio
-async def test_basic_test_client(app):
-    request, response = await app.asgi_client.get("/")
+def test_api(app):
+    request, response = app.get("/api")
     assert request.method.lower() == "get"
-    assert response.body == b"Blog index"
+    assert response.body == b"api index"
+    assert response.status == 200
+
+
+def test_docs(app):
+    request, response = app.get("/docs")
+    assert request.method.lower() == "get"
+    assert response.body == b"docs index"
     assert response.status == 200

@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+.PHONY: init run test clean
+
 init:
 	pip3 install --upgrade build
 	python3 -m build
@@ -7,13 +9,14 @@ init:
 	. venv/bin/activate; pip3 install -r requirements.txt; pre-commit install
 
 run:
-	sanic blog.server.app
+	. venv/bin/activate; sanic blog.server.app
+
+debug:
+	. venv/bin/activate; sanic blog.server.app --debug
 
 test:
-	pytest tests
+	. venv/bin/activate; pytest tests
 
 clean:
 	rm -rf venv
 	find -iname "*.pyc" -delete
-
-.PHONY: init test clean
