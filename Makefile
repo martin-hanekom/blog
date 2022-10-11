@@ -1,9 +1,13 @@
 SHELL := /bin/bash
 
 init:
-	python -m virtualenv venv
-	. venv/bin/activate; pip install -r requirements.txt
-	pre-commit install
+	pip3 install --upgrade build
+	python3 -m build
+	python3 -m virtualenv venv
+	. venv/bin/activate; pip3 install -r requirements.txt; pre-commit install
+
+run:
+	sanic blog.server.app
 
 test:
 	pytest tests
