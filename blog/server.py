@@ -16,9 +16,11 @@ async def index(request: Request) -> HTTPResponse:
 
 @app.get("/api")
 async def api_index(request: Request) -> HTTPResponse:
-    return await text("api index")
+    return text("api index")
 
 
+"""
 @app.get("/docs")
 async def docs_index(request: Request) -> HTTPResponse:
     return await text("docs index")
+"""
