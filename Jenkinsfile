@@ -1,5 +1,6 @@
 pipeline {
-  agent any
+  agent {
+    docker { image '
   stages {
     stage("test PythonEnv") {
       withPythonEnv("python3") {

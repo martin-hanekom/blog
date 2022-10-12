@@ -19,8 +19,5 @@ async def api_index(request: Request) -> HTTPResponse:
     return text("api index")
 
 
-"""
-@app.get("/docs")
-async def docs_index(request: Request) -> HTTPResponse:
-    return await text("docs index")
-"""
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=3000, access_log=False)
