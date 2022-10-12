@@ -1,12 +1,11 @@
 pipeline {
   agent {
-    docker { image '
+    docker { dockerfile true }
+  }
   stages {
-    stage("test PythonEnv") {
-      withPythonEnv("python3") {
-        sh "pip3 install pytest"
-        sh "pytest"
+    stage('Test') {
+      steps {
+        sh 'pytest'
       }
     }
-  }
 }
