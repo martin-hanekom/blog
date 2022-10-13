@@ -3,14 +3,16 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'ci/test.sh'
+        sh "chmod +x -R ${env.WORKSPACE}"
+        sh "./ci/test.sh"
       }
     }
     stage('Deploy') {
       steps {
-        sh 'ci/deploy.sh'
-        input message: 'Stop deployment?'
-        sh 'ci/kill.sh'
+        sh "chmod +x -R ${env.WORKSPACE}"
+        sh "./ci/deploy.sh"
+        input message: "Stop deployment?"
+        sh "./ci/kill.sh"
       }
     }
   }

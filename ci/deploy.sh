@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PORT=3000
 echo 'Deploying app.'
 set -x
