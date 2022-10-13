@@ -11,7 +11,7 @@ def app():
 async def test_api(app):
     request, response = await app.asgi_client.get("/api")
     assert request.method.lower() == "get"
-    assert response.body == b"api index"
+    assert response.body == b"api index."
     assert response.status == 200
 
 

@@ -3,7 +3,14 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'pytest'
+        sh 'ci/test.sh'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'ci/deploy.sh'
+        input message: 'Stop deployment?'
+        sh 'ci/kill.sh'
       }
     }
   }
