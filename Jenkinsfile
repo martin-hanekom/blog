@@ -11,8 +11,8 @@ pipeline {
       steps {
         sh "chmod +x -R ${env.WORKSPACE}"
         sh "./ci/deploy.sh"
-        input message: "Stop deployment?"
-        sh "./ci/kill.sh"
+        //input message: "Stop deployment?"
+        //sh "./ci/kill.sh"
       }
     }
   }
